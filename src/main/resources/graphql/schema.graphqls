@@ -1,0 +1,38 @@
+type Query {
+    students: [Student]
+    student(id:ID) : Student
+    classrooms: [Classroom]
+}
+
+type Mutation{
+    addStudent(studentDTORequest : StudentDTORequest):Student
+    updateStudent(id: ID, student:StudentDTORequest):Student
+    deleteStudent(id:ID) : Boolean
+}
+
+input StudentDTORequest {
+    fullName:String,
+    birthDate:String,
+    NID:String,
+    gender:String,
+    contactNo:String,
+    address:String
+}
+type Classroom{
+    id:ID,
+    name:String,
+    students: [Student]
+}
+
+type Student{
+    id:ID,
+    fullName:String,
+    birthDate:String,
+    NID:String,
+    gender:String,
+    contactNo:String,
+    address:String,
+    enabled:String,
+    classroom:Classroom
+}
+
